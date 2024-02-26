@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view></router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomePage from './views/Home.vue';
+import AddProduct from './views/AddProduct.vue';
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {
+      path: '/',
+      component: HomePage
+    },
+    {
+      path: '/add-product',
+      component: AddProduct
+    }
+  ]
+});
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  router // Menambahkan router ke dalam aplikasi Vue
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
